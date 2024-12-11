@@ -10,6 +10,7 @@ export default defineConfig({
       fonts: "/src/assets/fonts",
       images: "/src/assets/images",
       components: "/src/components", 
+      contexts: "/src/contexts", 
       utils: "/src/utils", 
     }
   },
