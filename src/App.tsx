@@ -1,6 +1,7 @@
 import Container from 'components/Container/Container';
 import Title from './components/Title/Title';
 import Form from './components/Form/Form';
+import Button from './components/Button/Button';
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <Title>Contact Us</Title>
       <Form>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum inventore, voluptatem quidem possimus dignissimos facere totam! Aliquid suscipit ducimus minus quo qui praesentium dolores totam eum expedita, libero ex. Consectetur.</p>
+        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
