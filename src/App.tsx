@@ -38,6 +38,12 @@ export default function App() {
           <Control.TextArea rows={3} />
           <Control.Error />
         </Control.Root>
+        <Control.Root error="" field="agreeOnContact">
+          <div className="flex items-center w-full gap-4">
+            <Control.Input type="checkbox" />
+            <Control.Label>I consent to being contacted by the team *</Control.Label>
+          </div>
+        </Control.Root>
         <Button type="submit">Submit</Button>
       </Form>
     </Container>

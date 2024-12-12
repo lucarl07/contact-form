@@ -20,6 +20,14 @@ function Radio({ field, id, value }: ControlInputProps) {
   )
 }
 
+function Checkbox({ field }: ControlInputProps) {
+  return (
+    <input 
+      type='checkbox' id={field} name={field} 
+      className="size-4 accent-lc-green-600" />
+  )
+}
+
 function DefaultInput({ field, error, type }: ControlInputProps) {
   const borderColor = error!.length > 0 ? 'border-lc-red' : 'border-gray-400'
   
@@ -36,6 +44,8 @@ export default function ControlInput(props: ControlInputProps) {
   switch (props.type) {
     case 'radio':
       return <Radio field={field} id={props.id} value={props.value} />
+    case 'checkbox':
+      return <Checkbox field={field} />
     default:
       return <DefaultInput field={field} error={error} type={props.type || 'text'} />
   }
