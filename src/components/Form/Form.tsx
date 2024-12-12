@@ -7,7 +7,7 @@ interface FormProps
 
 function Form({ children, ...rest }: FormProps) {
   return (
-    <form {...rest}>
+    <form {...rest} className="flex flex-col gap-5">
       {children}
     </form>
   )
