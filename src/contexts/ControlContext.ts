@@ -1,5 +1,10 @@
 import { createContext } from 'react'
 
-const ControlContext = createContext({ field: '', error: '' })
+interface IControlContext {
+  field: string
+  error: string
+}
+
+const ControlContext = createContext<IControlContext>({ field: '', error: '' })
 
 export default ControlContext;
