@@ -16,6 +16,12 @@ export default function App() {
     setFormValues({ ...formValues, [name]: { value, error: '' } })
   }
 
+  const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target
+    const value = checked ? 'checked' : 'unchecked'
+    setFormValues({ ...formValues, [name]: { value, error: '' } })
+  }
+
   return (
     <Container>
       <Form>
@@ -70,7 +76,9 @@ export default function App() {
         </Control.Root>
         <Control.Root error="" field="agreeOnContact">
           <div className="flex items-center w-full gap-4">
-            <Control.Input type="checkbox" />
+            <Control.Input 
+              type="checkbox"
+              onChange={handleCheckbox} />
             <Control.Label>I consent to being contacted by the team *</Control.Label>
           </div>
         </Control.Root>
