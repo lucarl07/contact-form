@@ -12,7 +12,6 @@ export default function App() {
   const [formValues, setFormValues] = useFormState()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    console.log(e.target)
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: { value, error: '' } })
   }
