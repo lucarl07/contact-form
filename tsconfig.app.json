@@ -16,6 +16,7 @@
       "components/*": ["./src/components/*"],
       "contexts/*": ["./src/contexts/*"],
       "hooks/*": ["./src/hooks/*"],
+      "utils/*": ["./src/utils/*"],
     },
 
     /* Bundler mode */

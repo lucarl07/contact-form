@@ -11,7 +11,8 @@ export default defineConfig({
       images: "/src/assets/images",
       components: "/src/components", 
       contexts: "/src/contexts", 
-      hooks: "/src/hooks", 
+      hooks: "/src/hooks",
+      utils: "/src/utils",
     }
   },
 })
