@@ -1,7 +1,7 @@
 /** For contexts: **/
 interface IControlContext {
   field: string
-  error: string
+  error: string | undefined
 }
 
 /** For hooks/utils: **/

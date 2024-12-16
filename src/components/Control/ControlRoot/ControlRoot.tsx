@@ -3,7 +3,7 @@ import ControlContext from 'contexts/ControlContext'
 
 interface ControlRootProps {
   field: string
-  error: string
+  error: string | undefined
   children: React.ReactNode
 }
 
