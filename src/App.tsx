@@ -1,5 +1,6 @@
 // Hooks:
 import useFormState from 'hooks/useFormState'
+import validateForm from './utils/validateForm'
 
 // Components:
 import Container from 'components/Container/Container';
@@ -22,12 +23,21 @@ export default function App() {
     setFormValues({ ...formValues, [name]: { value, error: '' } })
   }
 
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    debugger;
+    e.preventDefault()
+    setFormValues(validateForm(formValues))
+  }
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Title>Contact Us</Title>
         <div className="flex space-x-3">
-          <Control.Root error="" field="firstName">
+          <Control.Root 
+            field="firstName"
+            error={formValues.firstName.error} 
+          >
             <Control.Label>First Name *</Control.Label>
             <Control.Input 
               type="text"
@@ -35,7 +45,10 @@ export default function App() {
               onChange={handleChange} />
             <Control.Error />
           </Control.Root>
-          <Control.Root error="" field="lastName">
+          <Control.Root 
+            field="lastName" 
+            error={formValues.lastName.error}
+          >
             <Control.Label>Last Name *</Control.Label>
             <Control.Input 
               type="text"
@@ -44,7 +57,10 @@ export default function App() {
             <Control.Error />
           </Control.Root>
         </div>
-        <Control.Root error="" field="email">
+        <Control.Root
+          field="email"
+          error={formValues.email.error}
+        >
           <Control.Label>Email Address *</Control.Label>
           <Control.Input 
             type="text"
@@ -52,7 +68,10 @@ export default function App() {
             onChange={handleChange} />
           <Control.Error />
         </Control.Root>
-        <Control.Root error="" field="queryType">
+        <Control.Root 
+          field="queryType" 
+          error={formValues.queryType?.error}
+        >
           <Control.Label>Query Type *</Control.Label>
           <div className="flex space-x-3">
             <Control.Input 
@@ -66,7 +85,10 @@ export default function App() {
           </div>
           <Control.Error />
         </Control.Root>
-        <Control.Root error="" field="message">
+        <Control.Root 
+          error={formValues.message.error} 
+          field="message"
+        >
           <Control.Label>Message *</Control.Label>
           <Control.TextArea 
             rows={3} 
@@ -74,7 +96,10 @@ export default function App() {
             onChange={handleChange} />
           <Control.Error />
         </Control.Root>
-        <Control.Root error="" field="agreeOnContact">
+        <Control.Root 
+          error={formValues.agreeOnContact.error} 
+          field="agreeOnContact"
+        >
           <div className="flex items-center w-full gap-4">
             <Control.Input 
               type="checkbox"
