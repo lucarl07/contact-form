@@ -27,6 +27,13 @@ export default function App() {
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     validateForm(formValues, formErrors, setFormErrors)
+
+    const areThereErrors = Object.entries(formErrors).every((err) => err[1] === '')
+
+    if (areThereErrors) {
+      // Placeholder:
+      window.alert(`Message sent! \n✅ Thanks for completing the form. We'll be in touch soon!`)
+    }
   }
 
   return (
