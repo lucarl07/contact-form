@@ -1,4 +1,7 @@
+type StateSetter<T> = React.Dispatch<React.SetStateAction<T>>
+
 type QueryTypes = 'enquiry' | 'support' | undefined
+
 type Checkbox = 'checked' | 'unchecked'
 
 interface IControlContext {
@@ -32,6 +35,7 @@ interface FormState {
     error: FormReducerError
   }
 }
+
 interface FormValues {
   firstName: string 
   lastName: string  
@@ -40,6 +44,7 @@ interface FormValues {
   message: string
   agreeOnContact: Checkbox
 }
+
 interface FormErrors {
   firstName: string
   lastName: string  
