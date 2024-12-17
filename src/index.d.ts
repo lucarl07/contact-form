@@ -1,10 +1,12 @@
-/** For contexts: **/
+type FormReducerError = string | undefined
+type QueryTypes = 'enquiry' | 'support' | undefined
+type Checkbox = 'checked' | 'unchecked'
+
 interface IControlContext {
   field: string
   error: string | undefined
 }
 
-/** For hooks/utils: **/
 interface FormState {
   firstName: {
     value: string
