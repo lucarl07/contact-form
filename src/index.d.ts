@@ -9,33 +9,6 @@ interface IControlContext {
   error: string | undefined
 }
 
-interface FormState {
-  firstName: {
-    value: string
-    error: FormReducerError
-  }
-  lastName: {
-    value: string
-    error: FormReducerError
-  }
-  email: {
-    value: string
-    error: FormReducerError
-  }
-  queryType?: {
-    value: QueryTypes
-    error: FormReducerError
-  }
-  message: {
-    value: string
-    error: FormReducerError
-  }
-  agreeOnContact: { 
-    value: Checkbox
-    error: FormReducerError
-  }
-}
-
 interface FormValues {
   firstName: string 
   lastName: string  
