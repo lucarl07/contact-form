@@ -1,4 +1,3 @@
-type FormReducerError = string | undefined
 type FormError = string | null
 type QueryTypes = 'enquiry' | 'support' | undefined
 type Checkbox = 'checked' | 'unchecked'
