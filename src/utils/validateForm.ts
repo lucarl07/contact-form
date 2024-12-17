@@ -2,7 +2,7 @@ function validateForm(values: FormValues, errors: FormErrors, setter: StateSette
   const { firstName, lastName, email, queryType, message, agreeOnContact } = values
   const updatedErrors = errors
 
-  /** Explanation for the following RegEx:
+  /** Explanation for the following RegExp:
    * 
    * Credits to: Gil from Stack Overflow
    * 
@@ -24,28 +24,44 @@ function validateForm(values: FormValues, errors: FormErrors, setter: StateSette
    * 
    * $ = Matches the end of the string 
    * **/
-  const emailRegEx = /^[a-zA-Z0-9]+([._-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.-][0-9a-zA-Z]+)*\.[a-zA-Z]{2,}$/
+  const emailFormat = /^[a-zA-Z0-9]+([._-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.-][0-9a-zA-Z]+)*\.[a-zA-Z]{2,}$/
 
   if (firstName.length === 0) {
     updatedErrors.firstName = 'This field is required'
+  } else {
+    updatedErrors.firstName = ''
   }
+
   if (lastName.length === 0) {
     updatedErrors.lastName = 'This field is required'
+  } else {
+    updatedErrors.lastName = ''
   }
+  
   if (email.length === 0) {
     updatedErrors.email = 'This field is required'
-  }
-  if (!email.match(emailRegEx)) {
+  } else if (!email.match(emailFormat)) {
     updatedErrors.email = 'Please enter a valid email address'
+  } else {
+    updatedErrors.email = ''
   }
+
   if (queryType === null || queryType === undefined) {
     updatedErrors.queryType = 'Please select a query type'
+  } else {
+    updatedErrors.queryType = ''
   }
+
   if (message.length === 0) {
     updatedErrors.message = 'This field is required'
+  } else {
+    updatedErrors.message = ''
   }
+
   if (agreeOnContact === 'unchecked') {
     updatedErrors.agreeOnContact = 'To submit this form, please consent on being contacted'
+  } else {
+    updatedErrors.agreeOnContact = ''
   }
 
   setter({ ...errors, ...updatedErrors })
