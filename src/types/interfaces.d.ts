@@ -47,7 +47,3 @@ interface FormErrors {
   message: string
   agreeOnContact: string
 }
-interface FormReducerAction { 
-  field: string
-  value: any /* NOTE: Formerly "string | QueryTypes | Checkbox"; Overload issue will be looked after */
-}
