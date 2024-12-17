@@ -45,7 +45,7 @@ export default function App() {
             field="firstName"
             error={formErrors.firstName}
           >
-            <Control.Label>First Name *</Control.Label>
+            <Control.Label required="true">First Name</Control.Label>
             <Control.Input 
               type="text"
               value={formValues.firstName}
@@ -56,7 +56,7 @@ export default function App() {
             field="lastName" 
             error={formErrors.lastName}
           >
-            <Control.Label>Last Name *</Control.Label>
+            <Control.Label required="true">Last Name</Control.Label>
             <Control.Input 
               type="text"
               value={formValues.lastName}
@@ -68,7 +68,7 @@ export default function App() {
           field="email"
           error={formErrors.email}
         >
-          <Control.Label>Email Address *</Control.Label>
+          <Control.Label required="true">Email Address</Control.Label>
           <Control.Input 
             type="text"
             value={formValues.email}
@@ -79,7 +79,7 @@ export default function App() {
           field="queryType" 
           error={formErrors.queryType}
         >
-          <Control.Label>Query Type *</Control.Label>
+          <Control.Label required="true">Query Type</Control.Label>
           <div className="flex space-x-3">
             <Control.Input 
               type="radio" id="enquiry" value="enquiry"
@@ -96,7 +96,7 @@ export default function App() {
           field="message"
           error={formErrors.message}
         >
-          <Control.Label>Message *</Control.Label>
+          <Control.Label required="true">Message</Control.Label>
           <Control.TextArea 
             rows={3} 
             value={formValues.message}
@@ -111,7 +111,7 @@ export default function App() {
             <Control.Input 
               type="checkbox"
               onChange={handleCheckbox} />
-            <Control.Label>I consent to being contacted by the team *</Control.Label>
+            <Control.Label required="true">I consent to being contacted by the team</Control.Label>
           </div>
           <Control.Error />
         </Control.Root>
