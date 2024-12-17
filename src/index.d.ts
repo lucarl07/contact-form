@@ -1,4 +1,3 @@
-type FormError = string | null
 type QueryTypes = 'enquiry' | 'support' | undefined
 type Checkbox = 'checked' | 'unchecked'
 
@@ -42,10 +41,10 @@ interface FormValues {
   agreeOnContact: Checkbox
 }
 interface FormErrors {
-  firstName: FormError
-  lastName: FormError  
-  email: FormError
-  queryType: FormError 
-  message: FormError
-  agreeOnContact: FormError
+  firstName: string
+  lastName: string  
+  email: string
+  queryType: string 
+  message: string
+  agreeOnContact: string
 }
