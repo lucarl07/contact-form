@@ -1,48 +1,54 @@
-function validateForm(state: FormState) {
-  debugger;
-  const { firstName, lastName, email, queryType, message, agreeOnContact } = state
-  const updates = state
-  
-  const emailRegex = /^[a-zA-Z0-9]+([._-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.-][0-9a-zA-Z]+)*\.[a-zA-Z]{2,}$/
+function validateForm(values: FormValues, errors: FormErrors, setter: StateSetter<FormErrors>) {
+  const { firstName, lastName, email, queryType, message, agreeOnContact } = values
+  const updatedErrors = errors
 
-  if (firstName.value.length === 0) {
-    updates.firstName = { 
-      value: '', 
-      error: 'This field is required' 
-    }
+  /** Explanation for the following RegEx:
+   * 
+   * Credits to: Gil from Stack Overflow
+   * 
+   * ^ = Matches the beginning of the string
+   * 
+   * [a-zA-Z0-9]+ = Matches one or more (+) letters and numbers
+   * 
+   * ([._-][0-9a-zA-Z]+)* = Optional block (*), Matches any single "._-" followed by at least a letter or number
+   * 
+   * @ = Matches "@"
+   * 
+   * [a-zA-Z0-9]+ = Matches one or more (+) letters and numbers
+   * 
+   * ([.-][0-9a-zA-Z]+)* = Optional block (*), Matches any single ".-" followed by at least a letter or number
+   * 
+   * \. = Matches "." (it needs to be escaped)
+   * 
+   * [a-zA-Z]{2,} = Matches two or more ({2,}) letters
+   * 
+   * $ = Matches the end of the string 
+   * **/
+  const emailRegEx = /^[a-zA-Z0-9]+([._-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.-][0-9a-zA-Z]+)*\.[a-zA-Z]{2,}$/
+
+  if (firstName.length === 0) {
+    updatedErrors.firstName = 'This field is required'
   }
-  if (lastName.value.length === 0) {
-    updates.lastName = { 
-      value: '', 
-      error: 'This field is required' 
-    }
+  if (lastName.length === 0) {
+    updatedErrors.lastName = 'This field is required'
   }
-  if (!email.value.match(emailRegex)) {
-    updates.email = { 
-      value: '', 
-      error: 'Please enter a valid email address' 
-    }
+  if (email.length === 0) {
+    updatedErrors.email = 'This field is required'
   }
-  if (!queryType?.value) {
-    updates.queryType = { 
-      value: undefined, 
-      error: 'Please select a query type' 
-    }
+  if (!email.match(emailRegEx)) {
+    updatedErrors.email = 'Please enter a valid email address'
   }
-  if (message.value.length === 0) {
-    updates.message = { 
-      value: '', 
-      error: 'This field is required' 
-    }
+  if (queryType === null || queryType === undefined) {
+    updatedErrors.queryType = 'Please select a query type'
   }
-  if (agreeOnContact.value !== 'checked') {
-    updates.agreeOnContact = { 
-      value: 'unchecked', 
-      error: 'To submit this form, please consent on being contacted' 
-    }
+  if (message.length === 0) {
+    updatedErrors.message = 'This field is required'
   }
-  
-  return updates;
+  if (agreeOnContact === 'unchecked') {
+    updatedErrors.agreeOnContact = 'To submit this form, please consent on being contacted'
+  }
+
+  setter({ ...errors, ...updatedErrors })
 }
 
 export default validateForm;
