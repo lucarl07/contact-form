@@ -31,6 +31,22 @@ interface FormState {
     error: FormReducerError
   }
 }
+interface FormValues {
+  firstName: string 
+  lastName: string  
+  email: string
+  queryType: QueryTypes 
+  message: string
+  agreeOnContact: Checkbox
+}
+interface FormErrors {
+  firstName: string 
+  lastName: string  
+  email: string
+  queryType: string 
+  message: string
+  agreeOnContact: string
+}
 interface FormReducerAction { 
   field: string
   value: any /* NOTE: Formerly "string | QueryTypes | Checkbox"; Overload issue will be looked after */
