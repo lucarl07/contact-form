@@ -40,81 +40,59 @@ export default function App() {
     <Container>
       <Form onSubmit={handleSubmit}>
         <Title>Contact Us</Title>
+
         <div className="flex space-x-3">
-          <Control.Root 
-            field="firstName"
-            error={formErrors.firstName}
-          >
+          <Control.Root field="firstName" error={formErrors.firstName}>
             <Control.Label required="true">First Name</Control.Label>
-            <Control.Input 
-              type="text"
-              value={formValues.firstName}
-              onChange={handleChange} />
+            <Control.Input value={formValues.firstName} onChange={handleChange} />
             <Control.Error />
           </Control.Root>
-          <Control.Root 
-            field="lastName" 
-            error={formErrors.lastName}
-          >
+
+          <Control.Root field="lastName" error={formErrors.lastName}>
             <Control.Label required="true">Last Name</Control.Label>
-            <Control.Input 
-              type="text"
-              value={formValues.lastName}
-              onChange={handleChange} />
+            <Control.Input value={formValues.lastName} onChange={handleChange} />
             <Control.Error />
           </Control.Root>
         </div>
-        <Control.Root
-          field="email"
-          error={formErrors.email}
-        >
+
+        <Control.Root field="email" error={formErrors.email}>
           <Control.Label required="true">Email Address</Control.Label>
-          <Control.Input 
-            type="text"
-            value={formValues.email}
-            onChange={handleChange} />
+          <Control.Input value={formValues.email} onChange={handleChange} />
           <Control.Error />
         </Control.Root>
-        <Control.Root 
-          field="queryType" 
-          error={formErrors.queryType}
-        >
+
+        <Control.Root field="queryType" error={formErrors.queryType}>
           <Control.Label required="true">Query Type</Control.Label>
           <div className="flex space-x-3">
             <Control.Input 
               type="radio" id="enquiry" value="enquiry"
-              desc="General Enquiry"
-              onChange={handleChange} />
+              desc="General Enquiry" onChange={handleChange} />
+            
             <Control.Input 
               type="radio" id="support" value="support"
-              desc="Support Request"
-              onChange={handleChange} />
+              desc="Support Request" onChange={handleChange} />
           </div>
           <Control.Error />
         </Control.Root>
-        <Control.Root 
-          field="message"
-          error={formErrors.message}
-        >
+        
+        <Control.Root field="message" error={formErrors.message}>
           <Control.Label required="true">Message</Control.Label>
           <Control.TextArea 
-            rows={3} 
-            value={formValues.message}
+            rows={3} value={formValues.message} 
             onChange={handleChange} />
           <Control.Error />
         </Control.Root>
-        <Control.Root 
-          field="agreeOnContact"
-          error={formErrors.agreeOnContact}
-        >
+
+        <Control.Root field="agreeOnContact" error={formErrors.agreeOnContact}>
           <div className="flex items-center w-full gap-4">
-            <Control.Input 
-              type="checkbox"
-              onChange={handleCheckbox} />
-            <Control.Label required="true">I consent to being contacted by the team</Control.Label>
+            <Control.Input type="checkbox" onChange={handleCheckbox} />
+            <Control.Label required="true">
+              I consent to being contacted by the team
+            </Control.Label>
           </div>
           <Control.Error />
         </Control.Root>
+
         <Button type="submit">Submit</Button>
       </Form>
     </Container>
