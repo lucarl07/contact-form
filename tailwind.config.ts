@@ -16,17 +16,17 @@ export default {
         }
       },
       animation: {
-        'in': 'fadeIn .3s',
-        'out': 'fadeOut .3s'
+        'in': 'fadeIn .3s forwards',
+        'out': 'fadeOut .3s forwards'
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+          from: { opacity: 0 },
+          to: { opacity: 1 },
         },
         fadeOut: {
-          '0%': { opacity: 1 },
-          '100%': { opacity: 0 },
+          from: { opacity: 1 },
+          to: { opacity: 0 },
         }
       }
     },
