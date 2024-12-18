@@ -10,14 +10,15 @@ interface ControlInputProps
 
 function Radio({ field, desc, ...rest }: ControlInputProps) {
   return (
-    <div className="flex items-center px-5 w-full h-12 gap-3 border border-gray-400 rounded-md">
+    <label htmlFor={rest.id} className="
+      flex items-center px-5 w-full h-12 gap-3 border border-gray-400 rounded-md
+      has-[:checked]:border-lc-green-600 has-[:checked]:bg-lc-green-200
+    ">
       <input 
         type='radio' name={field} id={rest.id} value={rest.value} {...rest}
-        className="border border-gray-300 rounded-full size-4 accent-lc-green-600" />
-      <label htmlFor={rest.id}>
-        {desc}
-      </label>
-    </div>
+        className="border border-gray-300 rounded-full size-4 accent-lc-green-600"/>
+      {desc}
+    </label>
   )
 }
 
@@ -35,7 +36,11 @@ function DefaultInput({ field, error, type, ...rest }: ControlInputProps) {
   return (
     <input 
       type={type} id={field} name={field} {...rest}
-      className={`px-4 w-full border ${borderColor} rounded-md h-12`} />
+      className={`
+        px-4 w-full border ${borderColor} rounded-md h-12 
+        hover:border-lc-green-600 
+        focus:border-lc-green-600 focus:outline-none
+      `} />
   )
 }
 
