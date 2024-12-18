@@ -16,7 +16,22 @@ export default {
         900: 'hsl(187, 24%, 22%)'
       }
     },
-    extend: {},
+    extend: {
+      animation: {
+        'in': 'fadeIn .3s',
+        'out': 'fadeOut .3s'
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        fadeOut: {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        }
+      }
+    },
   },
   plugins: [],
 }
