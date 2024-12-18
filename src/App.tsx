@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 // Hooks & utilities:
-import validateForm from 'src/utils/validateForm'
+import validateForm from 'utils/validateForm'
+import useFade from 'hooks/useFade';
 import { useFormErrors, useFormValues } from 'hooks/formHooks'
 
 // Components:
@@ -15,10 +16,10 @@ import Button from 'components/Button/Button';
 import Success from './components/Success/Success';
 
 export default function App() {
-  const [showModal, setShowModal] = useState(false)
   const [formValues, setFormValues] = useFormValues()
   const [formErrors, setFormErrors] = useFormErrors()
-
+  const {isVisible, setVisible, fadeProps: fp} = useFade(false);
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
@@ -37,16 +38,19 @@ export default function App() {
     const areThereNoErrors = Object.entries(formErrors).every((err) => err[1] === '')
 
     if (areThereNoErrors) {
-      setShowModal(true)
+      setVisible(true)
       setInterval(() => {
-        setShowModal(false)
+        setVisible(false)
       }, 3000);
     }
   }
 
   return (
     <>
-      {showModal && createPortal(<Success />, document.body)}
+      {isVisible && createPortal(
+        <Success animation={fp.animation} onAnimationEnd={fp.onAnimationEnd} />, 
+        document.body
+      )}
       <Container>
         <Title>Contact Us</Title>
         <Form onSubmit={handleSubmit}>
