@@ -10,7 +10,7 @@ export default function Button({ children, ...rest }: ButtonProps) {
     <button {...rest} className="
       p-4 w-full rounded-md bg-lc-green-600 font-medium text-white 
       transition-colors
-      hover:bg-[#084f42]
+      hover:bg-lc-grey-900
     ">
       {children}
     </button>
