@@ -1,3 +1,7 @@
+// Dependencies:
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+
 // Hooks & utilities:
 import validateForm from 'src/utils/validateForm'
 import { useFormErrors, useFormValues } from 'hooks/formHooks'
@@ -8,8 +12,10 @@ import Title from 'components/Title/Title';
 import Form from 'components/Form/Form';
 import Control from 'components/Control'
 import Button from 'components/Button/Button';
+import Success from './components/Success/Success';
 
 export default function App() {
+  const [showModal, setShowModal] = useState(false)
   const [formValues, setFormValues] = useFormValues()
   const [formErrors, setFormErrors] = useFormErrors()
 
@@ -28,66 +34,71 @@ export default function App() {
     e.preventDefault()
     validateForm(formValues, formErrors, setFormErrors)
 
-    const areThereErrors = Object.entries(formErrors).every((err) => err[1] === '')
+    const areThereNoErrors = Object.entries(formErrors).every((err) => err[1] === '')
 
-    if (areThereErrors) {
-      // Placeholder:
-      window.alert(`Message sent! \n✅ Thanks for completing the form. We'll be in touch soon!`)
+    if (areThereNoErrors) {
+      setShowModal(true)
+      setInterval(() => {
+        setShowModal(false)
+      }, 3000);
     }
   }
 
   return (
-    <Container>
-      <Title>Contact Us</Title>
-      <Form onSubmit={handleSubmit}>
-        <div className="flex space-x-3">
-          <Control.Root field="firstName" error={formErrors.firstName}>
-            <Control.Label required="true">First Name</Control.Label>
-            <Control.Input value={formValues.firstName} onChange={handleChange} />
-          </Control.Root>
-
-          <Control.Root field="lastName" error={formErrors.lastName}>
-            <Control.Label required="true">Last Name</Control.Label>
-            <Control.Input value={formValues.lastName} onChange={handleChange} />
-          </Control.Root>
-        </div>
-
-        <Control.Root field="email" error={formErrors.email}>
-          <Control.Label required="true">Email Address</Control.Label>
-          <Control.Input value={formValues.email} onChange={handleChange} />
-        </Control.Root>
-
-        <Control.Root field="queryType" error={formErrors.queryType}>
-          <Control.Label required="true">Query Type</Control.Label>
+    <>
+      {showModal && createPortal(<Success />, document.body)}
+      <Container>
+        <Title>Contact Us</Title>
+        <Form onSubmit={handleSubmit}>
           <div className="flex space-x-3">
-            <Control.Input 
-              type="radio" id="enquiry" value="enquiry"
-              desc="General Enquiry" onChange={handleChange} />
-            
-            <Control.Input 
-              type="radio" id="support" value="support"
-              desc="Support Request" onChange={handleChange} />
-          </div>
-        </Control.Root>
-        
-        <Control.Root field="message" error={formErrors.message}>
-          <Control.Label required="true">Message</Control.Label>
-          <Control.TextArea 
-            rows={3} value={formValues.message} 
-            onChange={handleChange} />
-        </Control.Root>
+            <Control.Root field="firstName" error={formErrors.firstName}>
+              <Control.Label required="true">First Name</Control.Label>
+              <Control.Input value={formValues.firstName} onChange={handleChange} />
+            </Control.Root>
 
-        <Control.Root field="agreeOnContact" error={formErrors.agreeOnContact}>
-          <div className="flex items-center w-full gap-4">
-            <Control.Input type="checkbox" onChange={handleCheckbox} />
-            <Control.Label required="true">
-              I consent to being contacted by the team
-            </Control.Label>
+            <Control.Root field="lastName" error={formErrors.lastName}>
+              <Control.Label required="true">Last Name</Control.Label>
+              <Control.Input value={formValues.lastName} onChange={handleChange} />
+            </Control.Root>
           </div>
-        </Control.Root>
 
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Container>
+          <Control.Root field="email" error={formErrors.email}>
+            <Control.Label required="true">Email Address</Control.Label>
+            <Control.Input value={formValues.email} onChange={handleChange} />
+          </Control.Root>
+
+          <Control.Root field="queryType" error={formErrors.queryType}>
+            <Control.Label required="true">Query Type</Control.Label>
+            <div className="flex space-x-3">
+              <Control.Input 
+                type="radio" id="enquiry" value="enquiry"
+                desc="General Enquiry" onChange={handleChange} />
+              
+              <Control.Input 
+                type="radio" id="support" value="support"
+                desc="Support Request" onChange={handleChange} />
+            </div>
+          </Control.Root>
+          
+          <Control.Root field="message" error={formErrors.message}>
+            <Control.Label required="true">Message</Control.Label>
+            <Control.TextArea 
+              rows={3} value={formValues.message} 
+              onChange={handleChange} />
+          </Control.Root>
+
+          <Control.Root field="agreeOnContact" error={formErrors.agreeOnContact}>
+            <div className="flex items-center w-full gap-4">
+              <Control.Input type="checkbox" onChange={handleCheckbox} />
+              <Control.Label required="true">
+                I consent to being contacted by the team
+              </Control.Label>
+            </div>
+          </Control.Root>
+
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Container>
+    </>
   );
 }
