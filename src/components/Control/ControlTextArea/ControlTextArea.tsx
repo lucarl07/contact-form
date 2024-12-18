@@ -5,7 +5,7 @@ type ControlTextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>
 
 function ControlTextArea(props: ControlTextAreaProps) {
   const { field, error } = React.useContext(ControlContext)
-  const borderColor = error!.length > 0 ? 'border-lc-red' : 'border-gray-400'
+  const borderColor = error.length > 0 ? 'border-lc-red' : 'border-gray-400'
 
   return (
     <textarea
