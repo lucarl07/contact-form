@@ -3,9 +3,10 @@ import React from 'react'
 import { createPortal } from 'react-dom';
 
 // Hooks & utilities:
-import validateForm from 'utils/validateForm'
 import useFade from 'hooks/useFade';
 import { useFormErrors, useFormValues } from 'hooks/formHooks'
+import delay from 'utils/delay'
+import validateForm from 'utils/validateForm'
 
 // Components:
 import Container from 'components/Container/Container';
@@ -13,7 +14,7 @@ import Title from 'components/Title/Title';
 import Form from 'components/Form/Form';
 import Control from 'components/Control'
 import Button from 'components/Button/Button';
-import Success from './components/Success/Success';
+import Success from 'components/Success/Success';
 
 export default function App() {
   const [formValues, setFormValues] = useFormValues()
@@ -31,7 +32,7 @@ export default function App() {
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     validateForm(formValues, formErrors, setFormErrors)
 
@@ -39,9 +40,8 @@ export default function App() {
 
     if (areThereNoErrors) {
       setVisible(true)
-      setInterval(() => {
-        setVisible(false)
-      }, 3000);
+      await delay(3000)
+      setVisible(false)
     }
   }
 
