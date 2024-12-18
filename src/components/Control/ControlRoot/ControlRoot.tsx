@@ -13,6 +13,11 @@ function ControlRoot({ field, error, children }: ControlRootProps) {
       <ControlContext.Provider value={{ field, error }}>
         {children}
       </ControlContext.Provider>
+      {error!.length > 0 && (
+        <span className="text-lc-red">
+          {error}
+        </span>
+      )}
     </div>
   )
 }

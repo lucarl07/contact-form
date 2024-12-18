@@ -44,20 +44,17 @@ export default function App() {
           <Control.Root field="firstName" error={formErrors.firstName}>
             <Control.Label required="true">First Name</Control.Label>
             <Control.Input value={formValues.firstName} onChange={handleChange} />
-            <Control.Error />
           </Control.Root>
 
           <Control.Root field="lastName" error={formErrors.lastName}>
             <Control.Label required="true">Last Name</Control.Label>
             <Control.Input value={formValues.lastName} onChange={handleChange} />
-            <Control.Error />
           </Control.Root>
         </div>
 
         <Control.Root field="email" error={formErrors.email}>
           <Control.Label required="true">Email Address</Control.Label>
           <Control.Input value={formValues.email} onChange={handleChange} />
-          <Control.Error />
         </Control.Root>
 
         <Control.Root field="queryType" error={formErrors.queryType}>
@@ -71,7 +68,6 @@ export default function App() {
               type="radio" id="support" value="support"
               desc="Support Request" onChange={handleChange} />
           </div>
-          <Control.Error />
         </Control.Root>
         
         <Control.Root field="message" error={formErrors.message}>
@@ -79,7 +75,6 @@ export default function App() {
           <Control.TextArea 
             rows={3} value={formValues.message} 
             onChange={handleChange} />
-          <Control.Error />
         </Control.Root>
 
         <Control.Root field="agreeOnContact" error={formErrors.agreeOnContact}>
@@ -89,7 +84,6 @@ export default function App() {
               I consent to being contacted by the team
             </Control.Label>
           </div>
-          <Control.Error />
         </Control.Root>
 
         <Button type="submit">Submit</Button>
