@@ -38,9 +38,8 @@ export default function App() {
 
   return (
     <Container>
+      <Title>Contact Us</Title>
       <Form onSubmit={handleSubmit}>
-        <Title>Contact Us</Title>
-
         <div className="flex space-x-3">
           <Control.Root field="firstName" error={formErrors.firstName}>
             <Control.Label required="true">First Name</Control.Label>
