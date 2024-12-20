@@ -60,7 +60,7 @@ export default function App() {
       <Container>
         <Title>Contact Us</Title>
         <Form onSubmit={handleSubmit}>
-          <div className="flex space-x-3">
+          <div className="flex flex-col gap-4 md:flex-row md:gap-3">
             <Control.Root field="firstName" error={formErrors.firstName}>
               <Control.Label required="true">First Name</Control.Label>
               <Control.Input value={formValues.firstName} onChange={handleChange} />
@@ -79,7 +79,7 @@ export default function App() {
 
           <Control.Root field="queryType" error={formErrors.queryType}>
             <Control.Label required="true">Query Type</Control.Label>
-            <div className="flex space-x-3">
+            <div className="flex flex-col gap-2 md:flex-row md:gap-3">
               <Control.Input 
                 type="radio" id="enquiry" value="enquiry"
                 desc="General Enquiry" onChange={handleChange} />
