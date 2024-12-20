@@ -32,7 +32,13 @@ export default function App() {
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.ctrlKey === true && e.key === 'Enter') {
+      handleSubmit(e)
+    }
+  }
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     validateForm(formValues, formErrors, setFormErrors)
 
@@ -88,7 +94,8 @@ export default function App() {
             <Control.Label required="true">Message</Control.Label>
             <Control.TextArea 
               rows={3} value={formValues.message} 
-              onChange={handleChange} />
+              onChange={handleChange}
+              onKeyDown={handleKeyDown} />
           </Control.Root>
 
           <Control.Root field="agreeOnContact" error={formErrors.agreeOnContact}>
