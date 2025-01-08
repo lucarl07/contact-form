@@ -8,8 +8,8 @@ interface SuccessProps extends React.HTMLAttributes<HTMLElement> {
 function Success({ animation, ...rest }: SuccessProps) {
   return (
     <section {...rest} className={`
-      absolute -translate-x-1/2 -translate-y-1/2 top-[10%] left-1/2 
-      flex flex-col gap-2 p-5 rounded-lg bg-lc-grey-900 ${animation}
+      fixed -translate-x-1/2 -translate-y-1/2 top-[10%] left-1/2
+      flex flex-col gap-2 p-5 rounded-lg min-w-60 bg-lc-grey-900 ${animation}
     `}>
       <hgroup className="flex gap-3">
         <img src={icon_success_check} alt="Success icon" />
