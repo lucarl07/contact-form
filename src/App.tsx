@@ -72,7 +72,7 @@ export default function App() {
             </Control.Root>
           </div>
 
-          <Control.Root field="email" error={formErrors.email}>
+          <Control.Root field="email" type="email" error={formErrors.email}>
             <Control.Label required="true">Email Address</Control.Label>
             <Control.Input value={formValues.email} onChange={handleChange} />
           </Control.Root>

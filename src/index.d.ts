@@ -6,6 +6,7 @@ type Checkbox = 'checked' | 'unchecked'
 
 interface IControlContext {
   field: string
+  type?: string
   error: string
 }
 
